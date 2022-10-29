@@ -16,8 +16,7 @@ interface ReplacementGroup {
  */
 const generateSubscriptReplacements = (): TextReplacement[] => {
     return Array(10).fill(null)
-        .map((e, i) => i)
-        .map(i => [`_${i}`, String.fromCharCode(parseInt((2080 + i).toString(), 16))])
+        .map((e, i) => [`_${i}`, String.fromCharCode(parseInt((2080 + i).toString(), 16))])
 };
 
 /** 
