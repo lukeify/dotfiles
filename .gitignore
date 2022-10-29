@@ -1,0 +1,17 @@
+# IDE bullshit
+.idea/
+
+# macOS bullshit
+.DS_Store
+
+# Node bullshit
+node_modules/
+dist/
+
+# My bullshit
+Text Substitutions.plist
+
+# Ignoring temporarily, since it's _not ready ✨_.
+.gitconfig
+.vimrc
+.ssh/

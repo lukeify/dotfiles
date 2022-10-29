@@ -1,0 +1,9 @@
+@media (min-width: 1280px) {
+    /**
+     * Expand the forecast width to the full size of the page, 
+     * now that the pesky RHS ads have been banished.
+     */
+	#sticky-bar-context-primary-section > [data-module="five-up-layout"] .Grid-cell:nth-child(2) { 
+		width: 75% !important; 
+	}
+}

@@ -1,0 +1,15 @@
+! Banish ads from metservice.com
+! Harvey Norman "Drying Time"
+metservice.com##[data-component="dryingIndex-content"]
+! Kings Plant Barn logo
+metservice.com##[href*="kings.co.nz"]
+! QMastercard Rugby World Cup information
+metservice.com##.hour48_native_feature
+metservice.com##.tab-footer__content
+! BBQ Forecast 🤦‍♂️
+metservice.com##[data-module-lookuparr*="advert/bbq-forecast"]
+! Remove other interstitial content
+metservice.com##[data-module-name*="advert"]
+! Remove the app advertising
+metservice.com##.Footer-section--promo
+metservice.com/maps-radar##.Nav-menu-list-item:last-child

@@ -1,0 +1,35 @@
+{
+    "removals": [
+        "Launchpad",
+        "Messages",
+        "FaceTime",
+        "Contacts",
+        "TV",
+        "Podcasts",
+        "Keynote",
+        "App Store"
+    ],
+    "additions": [
+        { "item": "IINA", "position": 11 },
+        { "item": "Bitwarden", "position": 12 },
+        { "item": "Enpass", "position": 13 },
+        { "item": "Slack", "position": 14 },
+        { "item": "Affinity Designer", "position": 15 },
+        { "item": "Affinity Photo", "position": 16 },
+        { "item": "PhpStorm", "position": 17 },
+        { "item": "RubyMine", "position": 18 },
+        { "item": "Xcode", "position": 19 },
+        { "item": "Visual Studio Code", "position": 20 },
+        { "item": "Paw", "position": 21 },
+        { "item": "Fork", "position": 22 },
+        { "item": "TablePlus", "position": 23 },
+        { "item": "iTerm", "position": 24 },
+        { "item": "OpenVPN Connect", "position": 25 },
+        { "item": "Transmission", "position": 26 }
+    ],
+    "spacers": [
+        { "after": "IINA" },
+        { "after": "Enpass" },
+        { "after": "iTerm" }
+    ]
+}
