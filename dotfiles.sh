@@ -96,7 +96,7 @@ System Preferences > Keyboard > Text.
 fi 
 
 if requires_js_compilation; then
-    rm -rf  ./dist
+    rm -rf ./dist
 fi
 
 # iTerm configuration. `lukeify.itermcolors` is a slightly modified 
