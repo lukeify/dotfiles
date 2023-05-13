@@ -24,6 +24,7 @@ as arguments set to 1. An example of this alternative usage is provided below:
   # Install brew packages and configure defaults
   BREW=1 DEFAULTS=1 ./dotfiles.sh
 ";
+exit 0
 fi
 
 # Assign default values to unassigned arguments.
