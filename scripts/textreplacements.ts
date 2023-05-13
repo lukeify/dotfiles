@@ -39,13 +39,13 @@ const readCustomReplacements = async (): Promise<TextReplacement[]> => {
  * @returns {string} - The XML structure of the replacement.
  */
 const createReplacement = (shortcut: string, phrase: string): string => {
-    const htmlEntitiesHash: Record<string, string> = {
+    const htmlEntities: Record<string, string> = {
         "<": "&lt;",
         ">": "&gt;",
     };
 
-    for (const entity in htmlEntitiesHash) {
-        shortcut = shortcut.replaceAll(entity, htmlEntitiesHash[entity]);
+    for (const entity in htmlEntities) {
+        shortcut = shortcut.replaceAll(entity, htmlEntities[entity]);
     }
 
     return `    <dict>
