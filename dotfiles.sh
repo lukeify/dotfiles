@@ -101,14 +101,14 @@ fi
 
 # iTerm configuration. `lukeify.itermcolors` is a slightly modified 
 # color theme that is based off `iceberg-dark`.
-cp iterm2/lukeify.itermcolors ~/.config/iterm2/lukeify.itermcolors
+# cp iterm2/lukeify.itermcolors ~/.config/iterm2/lukeify.itermcolors
 
 # Setup neofetch
-cp neofetch.config ~/.config/neofetch/config.conf
+# cp neofetch.config ~/.config/neofetch/config.conf
 
 # Configure our shell
-touch ~/.hushlogin
-cp .zshrc ~/.zshrc
+# touch ~/.hushlogin
+# cp .zshrc ~/.zshrc
 
 # TODO: 
 # #cp .ssh/config ~/.ssh/config
