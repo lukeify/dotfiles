@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
 
+# Descriptions for each of these options can be found here:
+# https://elder.dev/posts/safer-bash/#enable-error-handling-options
 set -o errexit
 set -o nounset
 set -o pipefail
 
+# If the first argument passed is "--help", print out the manual information about the command.
+# This should be migrated to a `man` command at some point in the future.
 if [[ "${1-}" = "--help" ]]; then
     echo "Usage: ./dotfiles.sh
 
-Hello! You're one step closer to having a consistent macOS experience!    
-By default, dotfiles will run a full system configuration. This includes:
+Hello! You're one step closer to having a consistent macOS experience!
+This script will only execute the sections you intend to enable. These are:
 
-    - Installing brew, along with packages and casks. (BREW=1)
-    - Organising your macOS dock. (DOCK=1)
-    - Setting macOS defaults with dockutil. (DEFAULTS=1)
-    - Creating a text replacements plist for you to drag into System Preferences. (TEXT_REPLACEMENTS=1)
+    - Installing brew, along with apps, packages, and casks. (APPS=1)
+    - Organising your macOS dock with \`dockutil\`. (DOCK=1)
+    - Setting macOS defaults with \`defaults\`. (DEFAULTS=1)
+    - Creating a text replacements plist for you to drag into Settings.app. (TEXT_REPLACEMENTS=1)
 
 If you'd like to only do some of these things, pass some of the flags above
 as arguments set to 1. An example of this alternative usage is provided below:
@@ -21,41 +25,36 @@ as arguments set to 1. An example of this alternative usage is provided below:
   # Only configure the dock
   DOCK=1 ./dotfiles.sh
 
-  # Install brew packages and configure defaults
-  BREW=1 DEFAULTS=1 ./dotfiles.sh
+  # Install brew packages & apps and configure defaults
+  APPS=1 DEFAULTS=1 ./dotfiles.sh
 ";
 exit 0
 fi
 
-# Assign default values to unassigned arguments.
-BREW="${BREW:-0}"
+# Define each of the flag that this scipt accepts, setting the value to zero if none is provided.
+APPS="${APPS:-0}"
 DOCK="${DOCK:-0}"
 DEFAULTS="${DEFAULTS:-0}"
 TEXT_REPLACEMENTS="${TEXT_REPLACEMENTS:-0}"
 
-if [[ "$BREW" = 0 && "$DOCK" = 0 && "$DEFAULTS" = 0 && "$TEXT_REPLACEMENTS" = 0 ]] ; then
-    ALL=1
-else
-    ALL=0
-fi
-
-# Determine if compilation of the typescript functionality included in this
-# repository is required.
-requires_js_compilation() {
-    [ "$ALL" = 1 ] || [ "$DOCK" = 1 ] || [ "$DEFAULTS" = 1 ] || [ "$TEXT_REPLACEMENTS" = 1 ];
+# Determine if compilation of the typescript functionality included in this repository is required. 
+# This is needed for any functionality that runs via node.js.
+requires_compilation() {
+    [ "$DOCK" = 1 ] || [ "$DEFAULTS" = 1 ] || [ "$TEXT_REPLACEMENTS" = 1 ];
 }
 
-# Determines if the provided aspect should be executed by the script.
-aspect_should_run() {
-    [ "$ALL" = 1 ] || [ "$1" = 1 ];
+# Determines if the provided aspect of the dotfiles script should be executed, by checking if its value
+# has been set to `1`.
+should_run() {
+    [ "$1" = 1 ];
 }
 
-if requires_js_compilation; then
+if requires_compilation; then
     yarn run compile > /dev/null 2>&1
 fi
 
-# Where it all begins. Setup brew and install the contents of `Brewfile`.
-if aspect_should_run "$BREW"; then
+# Setup brew and install the contents of `Brewfile`, including casks, and `mas` entries.
+if should_run "$APPS"; then
     if [[ ! $(which -s brew) ]] ; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     else
@@ -66,12 +65,12 @@ fi
 
 # Configure the macOS dock. This requires node, and as such also requires
 # the brew profile to have been executed. 
-if aspect_should_run "$DOCK"; then
+if should_run "$DOCK"; then
     node ./dist/dock.js
 fi
 
 # Update default preferences across macOS to make the OS more homely.
-if aspect_should_run "$DEFAULTS"; then
+if should_run "$DEFAULTS"; then
     node ./dist/desktop.js
     node ./dist/finder.js
     node ./dist/global.js
@@ -87,15 +86,15 @@ if aspect_should_run "$DEFAULTS"; then
     sudo scutil --set LocalHostName "Lukes$DEVICE_TYPE"
 fi
 
-if aspect_should_run "$TEXT_REPLACEMENTS"; then
+if should_run "$TEXT_REPLACEMENTS"; then
     node ./dist/textreplacements.js
     echo "
 Generated 'Text Substitutions.plist'! Drag this file into the table view of
-System Preferences > Keyboard > Text.
+Settings.app > Keyboard > Text.
 ";
 fi 
 
-if requires_js_compilation; then
+if requires_compilation; then
     rm -rf ./dist
 fi
 
