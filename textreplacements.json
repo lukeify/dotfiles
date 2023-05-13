@@ -1,5 +1,102 @@
 [
     {
+        "title": "Arrows",
+        "replacements": [
+            ["->", "→"],
+            ["<-", "←"],
+            ["<->", "↔"],
+            ["arrup;", "↑"],
+            ["arrdown;", "↓"],
+            ["clockwise;", "↺"],
+            ["anticlockwise;", "↻"]
+        ]
+    },
+    {
+        "title": "Card suits",
+        "replacements": [
+            ["clubs;", "♣"],
+            ["spades;", "♠"],
+            ["hearts;", "♥"],
+            ["diamonds;", "♦"]
+        ]
+    },
+    {
+        "title": "Comparisons",
+        "replacements": [
+            ["!=;", "≠"],
+            ["<=;", "≤"],
+            [">=;", "≥"],
+            ["approx;", "≈"]
+        ]
+    },
+    {
+        "title": "Currencies",
+        "replacements": [
+            ["gbp;", "£"],
+            ["gbptwobar;", "₤"],
+            ["eur;", "€"],
+            ["cent;", "¢"]
+        ]
+    },
+    {
+        "title": "Fractions",
+        "replacements": [
+            ["1/2", "½"],
+            ["1/3", "⅓"],
+            ["1/4", "¼"],
+            ["1/8", "⅛"],
+            ["2/3", "⅔"],
+            ["3/4", "¾"],
+            ["3/8", "⅜"],
+            ["5/8", "⅝"],
+            ["7/8", "⅞"]
+        ]
+    },
+    {
+        "title": "Keyboard Modifiers",
+        "replacements": [
+            ["opt;", "⌥"],
+            ["ctrl;", "⌃"],
+            ["cmd;", "⌘"],
+            ["caps;", "⇪"],
+            ["shift;", "⇧"],
+            ["return;", "⏎"]
+        ]
+    },
+    {
+        "title": "Logic & Sets",
+        "replacements": [
+            ["all;", "∀"],
+            ["elementof;", "∈"],
+            ["emptyset;", "∅"],
+            ["notelementof;", "∉"],
+            ["subset;", "⊆"]
+        ]
+    },
+    {
+        "title": "Marks",
+        "replacements": [
+            ["(c)", "©"],
+            ["(p)", "℗"],
+            ["(r)", "®"],
+            ["tm;", "™"],
+            ["sm;", "℠"]
+        ]
+    },
+    {
+        "title": "Math",
+        "replacements": [
+            ["+-;", "±"],
+            ["sqrt;", "√"],
+            ["cbrt;", "∛"],
+            ["4rt;", "∜"],
+            ["integral;", "∫"],
+            ["inf;", "∞"],
+            ["permille;", "‰"],
+            ["pertenk;", "‱"]
+        ]
+    },
+    {
         "title": "Superscripts",
         "replacements": [
             ["^-", "⁻"],
@@ -20,124 +117,49 @@
         ]
     },
     {
-        "title": "Fractions",
+        "title": "Symbols",
         "replacements": [
-            ["1/2", "½"],
-            ["1/3", "⅓"],
-            ["1/4", "¼"],
-            ["1/8", "⅛"],
-            ["2/3", "⅔"],
-            ["3/4", "¾"],
-            ["3/8", "⅜"],
-            ["5/8", "⅝"],
-            ["7/8", "⅞"]
+            ["apple;", ""],
+            ["music;", "♫"]
         ]
     },
     {
-        "title": "Arrows",
+        "title": "Typography",
         "replacements": [
-            ["->", "→"],
-            ["<-", "←"],
-            ["<->", "↔"],
-            ["arrup;", "↑"],
-            ["arrdown;", "↓"],
-            ["clockwise;", "↺"],
-            ["anticlockwise;", "↻"]
+            ["...", "…"],
+            ["asterism;", "⁂"],
+            ["bullet;", "•"],
+            ["dagger;", "†"],
+            ["doubledagger;", "‡"],
+            ["lozenge;", "◊"],
+            ["interpunct;", "·"],
+            ["manicule;", "☞"],
+            ["numero;", "№"],
+            ["pilcrow;", "¶"],
+            ["sec;", "§"]
         ]
     },
     {
-        "title": "Keyboard Modifiers",
-        "replacements": [
-            ["opt;", "⌥"],
-            ["ctrl;", "⌃"],
-            ["cmd;", "⌘"],
-            ["caps;", "⇪"],
-            ["shift;", "⇧"],
-            ["return;", "⏎"]
-        ]
-    },
-    {
-        "title": "Grammar",
-        "replacements": [
-            ["...", "…"]
-        ]
-    },
-    {
-        "title": "Marks",
-        "replacements": [
-            ["(c)", "©"],
-            ["(p)", "℗"],
-            ["(r)", "®"],
-            ["tm;", "™"],
-            ["sm;", "℠"]
-        ]
-    },
-    {
-        "title": "Comparisons",
-        "replacements": [
-            ["!=;", "≠"],
-            ["<=;", "≤"],
-            [">=;", "≥"],
-            ["approx;", "≈"]
-        ]
-    },
-    {
-        "title": "Math",
-        "replacements": [
-            ["+-;", "±"],
-            ["sqrt;", "√"],
-            ["cbrt;", "∛"],
-            ["4rt;", "∜"],
-            ["integral;", "∫"]
-        ]
-    },
-    {
-        "title": "Logic & Sets",
-        "replacements": [
-            ["all;", "∀"],
-            ["elementof;", "∈"],
-            ["emptyset;", "∅"],
-            ["notelementof;", "∉"],
-            ["subset;", "⊆"]
-        ]
-    },
-    {
-        "title": "Wider character palette",
+        "title": "Other",
         "replacements": [
             ["ae;", "æ"],
             ["alpha;", "α"],
-            ["asterism;", "⁂"],
-            ["bullet;", "•"],
             ["careof;", "℅"],
             ["colonequals;", "≔"],
-            ["dagger;", "†"],
             ["deg;", "°"],
             ["delta;", "Δ"],
+            ["df;", "✪"],
             ["dia;", "⌀"],
             ["f;", "ƒ"],
-            ["inf;", "∞"],
-            ["interpunct;", "·"],
             ["l;", "ℓ"],
             ["mu;", "μ"],
-            ["numero;", "№"],
             ["omega;", "Ω"],
-            ["permille;", "‰"],
-            ["pertenk;", "‱"],
-            ["pilcrow;", "¶"],
             ["rx;", "℞"],
-            ["sec;", "§"],
             ["sigma;", "∑"],
             ["sinewave;", "∿"],
             ["snake;", "⚕"],
             ["theta;", "Θ"],
             ["times;", "×"]
-        ]
-    },
-    {
-        "title": "Symbols",
-        "replacements": [
-            ["apple;", ""],
-            ["music;", "♫"]
         ]
     }
 ]
