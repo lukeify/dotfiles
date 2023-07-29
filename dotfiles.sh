@@ -31,7 +31,7 @@ as arguments set to 1. An example of this alternative usage is provided below:
 exit 0
 fi
 
-# Define each of the flag that this scipt accepts, setting the value to zero if none is provided.
+# Define each of the flag that this script accepts, setting the value to zero if none is provided.
 APPS="${APPS:-0}"
 DOCK="${DOCK:-0}"
 DEFAULTS="${DEFAULTS:-0}"
