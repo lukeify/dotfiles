@@ -17,6 +17,7 @@ This script will only execute the sections you intend to enable. These are:
     - Installing brew, along with apps, packages, and casks. (APPS=1)
     - Organising your macOS dock with \`dockutil\`. (DOCK=1)
     - Setting macOS defaults with \`defaults\`. (DEFAULTS=1)
+    - Copy over home user configuration into \`~\`. (HOME=1)
     - Creating a text replacements plist for you to drag into Settings.app. (TEXT_REPLACEMENTS=1)
 
 If you'd like to only do some of these things, pass some of the flags above
@@ -27,6 +28,9 @@ as arguments set to 1. An example of this alternative usage is provided below:
 
   # Install brew packages & apps and configure defaults
   APPS=1 DEFAULTS=1 ./dotfiles.sh
+
+Some functionality requires Node & Yarn. If this functionality is required, then \`APPS=1\` will 
+be executed automatically.
 ";
 exit 0
 fi
@@ -35,6 +39,7 @@ fi
 APPS="${APPS:-0}"
 DOCK="${DOCK:-0}"
 DEFAULTS="${DEFAULTS:-0}"
+HOME="${HOME:-0}"
 TEXT_REPLACEMENTS="${TEXT_REPLACEMENTS:-0}"
 
 # Determine if compilation of the typescript functionality included in this repository is required. 
@@ -49,27 +54,41 @@ should_run() {
     [ "$1" = 1 ];
 }
 
-if requires_compilation; then
-    yarn run compile > /dev/null 2>&1
-fi
-
 # Setup brew and install the contents of `Brewfile`, including casks, and `mas` entries.
-if should_run "$APPS"; then
+run_apps() {
     if [[ ! $(which -s brew) ]] ; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     else
         brew update
     fi
     brew bundle
+}
+
+if requires_compilation; then
+    run_apps
+    yarn run compile > /dev/null 2>&1
+fi
+
+# ------------------------------------------------------------------------------------------
+# APPS
+# Install applications. If other setup steps require Node, then this will run regardless.
+# ------------------------------------------------------------------------------------------
+if should_run "$APPS" && ! requires_compilation; then
+    run_apps
 fi 
 
-# Configure the macOS dock. This requires node, and as such also requires
-# the brew profile to have been executed. 
+# ------------------------------------------------------------------------------------------
+# DOCK
+# Configure the macOS dock.
+# ------------------------------------------------------------------------------------------
 if should_run "$DOCK"; then
     node ./dist/dock.js
 fi
 
+# ------------------------------------------------------------------------------------------
+# DEFAULTS
 # Update default preferences across macOS to make the OS more homely.
+# ------------------------------------------------------------------------------------------
 if should_run "$DEFAULTS"; then
     node ./dist/desktop.js
     node ./dist/finder.js
@@ -86,29 +105,28 @@ if should_run "$DEFAULTS"; then
     sudo scutil --set LocalHostName "Lukes$DEVICE_TYPE"
 fi
 
+# ------------------------------------------------------------------------------------------
+# HOME
+# Configure the home directory and other personalisations for the user. This currently includes `zsh` shell configuration.
+# ------------------------------------------------------------------------------------------
+if should_run "$HOME"; then
+    # Install ohmyzsh and append on our additional zsh configuration.
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    cat .zshrc >> ~/.zshrc
+fi
+
+# ------------------------------------------------------------------------------------------
+# TEXT_REPLACEMENTS
+# Generate text replacements output.
+# ------------------------------------------------------------------------------------------
 if should_run "$TEXT_REPLACEMENTS"; then
     node ./dist/textreplacements.js
     echo "
 Generated 'Text Substitutions.plist'! Drag this file into the table view of
-Settings.app > Keyboard > Text.
+System Settings.app > Keyboard > Text.
 ";
 fi 
 
 if requires_compilation; then
     rm -rf ./dist
 fi
-
-# iTerm configuration. `lukeify.itermcolors` is a slightly modified 
-# color theme that is based off `iceberg-dark`.
-# cp iterm2/lukeify.itermcolors ~/.config/iterm2/lukeify.itermcolors
-
-# Setup neofetch
-# cp neofetch.config ~/.config/neofetch/config.conf
-
-# Configure our shell
-# touch ~/.hushlogin
-# cp .zshrc ~/.zshrc
-
-# TODO: 
-# #cp .ssh/config ~/.ssh/config
-# #cp .gitconfig ~/.gitconfig
