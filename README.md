@@ -15,7 +15,8 @@ cd dotfiles
 1. `APPS=1` will install brew, associated apps, packages, and casks.
 2. `DEFAULTS=1` will set system-wide defaults using `defaults write`.
 3. `DOCK=1` will configure the dock using `dockutil`.
-4. `TEXT_REPLACEMENTS=1` will generate a `Text Substitutions.plist` file that can be manully dropped into the `Settings.app` > _Keyboard_ > _Text_ pane.
+4. `HOME=1` configures many services in your home directory (zsh, vim, ssh, etc).
+5. `TEXT_REPLACEMENTS=1` will generate a `Text Substitutions.plist` file that can be manully dropped into the `System Settings.app` > _Keyboard_ > _Text_ pane.
 
 ## Useful resources
 
@@ -34,15 +35,19 @@ These changes are not synced to iCloud immediately and may require a system rest
 
 ### Todos
 
-- Implement both `Terminal.app` and `iTerm2.app` themes.
+- Implement both `Terminal.app` and `iTerm2.app` themes (and `iTerm2.app` configures).
 - Create application shortcut adjustements.
 - Properly implement text replacements.
 - Configure the Finder sidebar.
 - Configure Transmission properly.
 - Set the desktop background, even.
 - Configure `pmset`.
-- Remove prerequisites for both `yarn` and `node` existing on the system to run `dotfiles.sh`.
+- Remove prerequisites for both `yarn` and `node` existing on the system to run `dotfiles.sh`, by migrating to Rust.
 - Try to follow the patterns set out by [dotfiles.github.io][2].
+- Configure ~/.ssh/config and ~/.git/config.
+- Configure vim config.
+- Investigate hushlogin.
+- Investigate neofetch configuration.
 
 [1]: https://github.com/mathiasbynens/dotfiles
 [2]: https://dotfiles.github.io
