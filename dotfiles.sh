@@ -110,7 +110,9 @@ fi
 # Configure the home directory and other personalisations for the user. This currently includes `zsh` shell configuration.
 # ------------------------------------------------------------------------------------------
 if should_run "$HOME"; then
-    cp .zshrc ~/.zshrc
+    # Install ohmyzsh and append on our additional zsh configuration.
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    cat .zshrc >> ~/.zshrc
 fi
 
 # ------------------------------------------------------------------------------------------
