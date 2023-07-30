@@ -90,7 +90,7 @@ if should_run "$TEXT_REPLACEMENTS"; then
     node ./dist/textreplacements.js
     echo "
 Generated 'Text Substitutions.plist'! Drag this file into the table view of
-Settings.app > Keyboard > Text.
+System Settings.app > Keyboard > Text.
 ";
 fi 
 
