@@ -17,7 +17,7 @@ This script will only execute the sections you intend to enable. These are:
     - Installing brew, along with apps, packages, and casks. (APPS=1)
     - Organising your macOS dock with \`dockutil\`. (DOCK=1)
     - Setting macOS defaults with \`defaults\`. (DEFAULTS=1)
-    - Copy over home user configuration into \`~\`. (HOME=1)
+    - Copy over home user configuration into \`~\`. (USER_DIRECTORY=1)
     - Creating a text replacements plist for you to drag into Settings.app. (TEXT_REPLACEMENTS=1)
 
 If you'd like to only do some of these things, pass some of the flags above
@@ -39,7 +39,7 @@ fi
 APPS="${APPS:-0}"
 DOCK="${DOCK:-0}"
 DEFAULTS="${DEFAULTS:-0}"
-HOME="${HOME:-0}"
+USER_DIRECTORY="${USER_DIRECTORY:-0}"
 TEXT_REPLACEMENTS="${TEXT_REPLACEMENTS:-0}"
 
 # Determine if compilation of the typescript functionality included in this repository is required. 
@@ -90,6 +90,7 @@ fi
 # Update default preferences across macOS to make the OS more homely.
 # ------------------------------------------------------------------------------------------
 if should_run "$DEFAULTS"; then
+    echo "Configuring system defaults..."
     node ./dist/desktop.js
     node ./dist/finder.js
     node ./dist/global.js
@@ -106,13 +107,22 @@ if should_run "$DEFAULTS"; then
 fi
 
 # ------------------------------------------------------------------------------------------
-# HOME
+# USER_DIRECTORY
 # Configure the home directory and other personalisations for the user. This currently includes `zsh` shell configuration.
 # ------------------------------------------------------------------------------------------
-if should_run "$HOME"; then
-    # Install ohmyzsh and append on our additional zsh configuration.
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if should_run "$USER_DIRECTORY"; then
+    echo "Configuring user home directory..."
+    # Install ohmyzsh and append on our additional zsh configuration, including enabling various oh-my-zsh plugins.
+    if [ ! -d ~/.oh-my-zsh ]; then
+        echo "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+        cp lukeify.zsh-theme ~/.oh-my-zsh/themes/lukeify.zsh-theme
+    fi
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     cat .zshrc >> ~/.zshrc
+    sed -i -e 's/plugins=(git)/plugins=(aliases bundler git)/' ~/.zshrc
+    sed -i -e 's/ZSH_THEME=.*/ZSH_THEME="lukeify"/' ~/.zshrc
 fi
 
 # ------------------------------------------------------------------------------------------
@@ -120,6 +130,7 @@ fi
 # Generate text replacements output.
 # ------------------------------------------------------------------------------------------
 if should_run "$TEXT_REPLACEMENTS"; then
+    echo "Adding text replacements..."
     node ./dist/textreplacements.js
     echo "
 Generated 'Text Substitutions.plist'! Drag this file into the table view of
