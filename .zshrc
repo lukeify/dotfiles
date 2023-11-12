@@ -5,7 +5,6 @@
 # -----------------------------------------------------------------------------------------------------------
 # HANDLED BY OH-MY-ZSH CONFIGURATION
 # -----------------------------------------------------------------------------------------------------------
-#
 # Terminal prompt. This variable, `PROMPT`` is an alias of `PS1`, and defines how the terminal prompt string
 # should be displayed. With `zsh` percent expansion of of prompt sequences is allowed, and is documented in:
 #
