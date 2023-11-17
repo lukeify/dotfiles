@@ -46,7 +46,7 @@ These changes are not synced to iCloud immediately and may require a system rest
 ### Todos
 
 - Implement both `Terminal.app` and `iTerm2.app` themes (and `iTerm2.app` configures).
-- Create application shortcut adjustements.
+- Create application shortcut adjustments.
 - Properly implement text replacements.
 - Configure the Finder sidebar.
 - Configure Transmission properly.
