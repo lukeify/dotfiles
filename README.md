@@ -20,6 +20,8 @@ cd dotfiles
 
 ## Documentation
 
+Miscellaneous documentation for the remainder of these dotfiles is as follows.
+
 ### iTerm2 configuration
 
 `iterm2/com.googlecode.iterm2.plist` can be exported from iTerm2 Preferences via General → Preferences, ensuring "Load preferences from a custom folder or URL" is ticked, browsing to save out preferences to this repository's location on disk, and persisting changes when your preferences change.
@@ -27,6 +29,28 @@ cd dotfiles
 A collection of colours which can be imported into an iTerm profile are known as "Colour Presets" and can be exported/imported as an `itermcolors` file (seen in this repository as `item2/lukeify.itermcolors`).
 
 An entire iTerm Profile can be composed of these presets and other appearance values, and is stored in the `iterm2/lukeify-iterm.json` file which can likewise be exported/imported from the bottom right of the profile tableview within iTerm 2 Preferences → Profiles.
+
+#### ANSI Colour mappings
+
+The ANSI colour mappings defined for my terminal configurations is as follows:
+
+| Name       | Colour                                                               |
+|------------|----------------------------------------------------------------------|
+| Black      | `hsl(225, 10%, 15%)` (`#23252B`)                                     | 
+| Red        | `hsl(351, 31%, 52%)` (`#AA5E6A`)                                     |
+| Green      | `hsl(145, 43%, 50%)` (`#49B776`)                                     | 
+| Yellow     | `hsl(40, 65%, 64%)` (`#DEB566`)                                      |
+| Blue       | `hsl(222, 48%, 48%)` (`#3F62B5`)                                     | 
+| Magenta    | `hsl(310, 19%, 56%)` (`#A4799D`)                                     | 
+| Cyan       | `hsl(191, 45%, 45%)` (`#3F94A8`)                                     | 
+| White      | `hsl(227, 22%, 92%)` (`#E6E8EF`)                                     |
+| Background | `hsla(206, 75%, 11%, 0.8)` (`#071F31`) (with 30% blur, if supported) |
+| Cursor     | `hsl(65, 41%, 95%)` (`#F6F7EC`)                                      |
+| Text       | `hsl(227, 22%, 92%)` (`#E6E8EF`) (same as "White")                   |
+| Bold Text  | `hsl(208, 100%, 89%)` (`#C5E4FF`)                                    | 
+| Selection  | `hsl(211, 23%, 62%)` (`#889DB4`)                                     |
+
+Unfortunately these will look different in `iTerm2.app` vs. `Terminal.app` as the former does not display P3 colour.
 
 ## Other information
 
