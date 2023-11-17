@@ -1,0 +1,16 @@
+[user]
+    # Set to be the name of my github profile.
+    name = lukeify
+    # This is the privacy noreply email address provided by GitHub.
+    email = 5379845+lukeify@users.noreply.github.com
+    # GPG Key.
+    signingkey = 79D26C1B89FC24AD
+[color]
+    # Enable colors in color-supporting terminals.
+    ui = auto
+[commit]
+    # Autosign commits without needing to pass the -S flag.
+    gpgsign = true
+[push]
+    # When pushing a new branch to origin, automatically configure the remote branch name.
+    autoSetupRemote = true

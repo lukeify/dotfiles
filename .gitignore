@@ -12,6 +12,5 @@ dist/
 Text Substitutions.plist
 
 # Ignoring temporarily, since it's _not ready ✨_.
-.gitconfig
 .vimrc
 .ssh/
