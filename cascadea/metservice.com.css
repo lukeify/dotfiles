@@ -1,9 +1,32 @@
 @media (min-width: 1280px) {
-    /**
-     * Expand the forecast width to the full size of the page, 
-     * now that the pesky RHS ads have been banished.
-     */
-	#sticky-bar-context-primary-section > [data-module="five-up-layout"] .Grid-cell:nth-child(2) { 
-		width: 75% !important; 
+	/**
+	 * Make the weather detail view and map view take up the remainder of the content.
+	 */
+	#sticky-bar-context-primary-section > [data-module="five-up-layout"] .Grid-cell:nth-child(2) {
+		width: 75% !important;
+	}
+
+	/**
+	 * Make the towns/cities list take up the full width of the page.
+	 */
+	#sticky-bar-context-primary-section > [data-module="five-up-layout"] .Grid-cell.u-xl-width9of12 {
+		width: 100% !important;
+	}
+
+	/**
+	 * Making the secondary below-the-fold container wider in its parent flex container causes the sidebar to shrink.
+	 * Prevent this.
+	 */
+	.Sidebar-wrapper {
+		flex-shrink: 0;
+	}
+
+	/**
+	 * Make secondary below-the-fold content take up the full width of space. This is defined as 100% of the containing
+	 * element's vertical width (`vb`), minus 1rem for the inline padding of the grid cell, and then 16.67% for the
+	 * sidebar's width.
+	 */
+	.Grid-cell.u-xl-width7of12 {
+		width: calc(100vb - 1rem - calc(100% / 6)) !important;
 	}
 }

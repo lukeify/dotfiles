@@ -1,0 +1,41 @@
+/* The useless header at the top of the site. */
+.header-top,
+/* The subscribe banner adjacent to the logo in the header. */
+.logo-container + *,
+/* A subscriber only label present on articles that can't be read. */
+.se-flag,
+/* Lightbox and subscriber only CSS modifications. */
+.bw-container, .bw-lb,
+/* Social BS links. */
+.pane-odt-social-odt-social-rsb, [class*="share-icons"],
+.inject-block-story,
+/* Hide div containing any image reference to a digital subscription. */
+.panel-pane.pane-custom.pane-1:has(img[src*="odt_summer_online"]) {
+    display: none;
+}
+
+/**
+ * Always allow scroll, even on "subscriber-only" articles.
+ */
+body {
+    overflow: scroll;
+}
+
+/**
+ * Too many horizontal and vertical rules!
+ */
+.views-row, .odt-top-stories li  {
+    border-top: none !important;
+}
+
+.navbar-nav > li > a {
+    border-left: none !important;
+}
+
+.odt-top-stories {
+    border-inline: none !important;
+}
+
+.odt-featured-content-belt {
+    border-block: none !important;
+}
