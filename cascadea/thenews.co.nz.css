@@ -1,0 +1,15 @@
+/* Distracting page background. */
+.backstretch {
+    display: none;
+}
+
+/* Remove box shadow now background doesn't exist. */
+.td-main-content-wrap,
+.td-header-desktop-wrap .tdc_zone {
+    box-shadow: none;
+}
+
+/* ODT+ app subscription ad. */
+.tdm_block:has(img[src*="ODT_Devices"]) {
+    display: none;
+}
