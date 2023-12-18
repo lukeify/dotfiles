@@ -1,3 +1,4 @@
+# Some configuration taken from https://blog.scottnonnenberg.com/better-git-configuration/, thanks.
 [user]
     # Set to be the name of my github profile.
     name = lukeify
@@ -5,12 +6,22 @@
     email = 5379845+lukeify@users.noreply.github.com
     # GPG Key.
     signingkey = 79D26C1B89FC24AD
+[alias]
+    # Commit with message
+    cm = commit -m
+    st = status
+    co = checkout
+    # Prune local branches which don't exist on remote.
+    prune = fetch --prune
 [color]
     # Enable colors in color-supporting terminals.
     ui = auto
 [commit]
     # Autosign commits without needing to pass the -S flag.
     gpgsign = true
+[log]
+    # Use abbreviated SHAs instead of full SHAs.
+    abbrevCommit = true
 [push]
     # When pushing a new branch to origin, automatically configure the remote branch name.
     autoSetupRemote = true
