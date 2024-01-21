@@ -1,0 +1,38 @@
+/* Use a sane font. */
+*, *::before, *::after {
+	font-family: ui-sans-serif !important;
+}
+
+/* Identify article titles via bold text. */
+.heading-text {
+	font-weight: bold;
+}
+
+.stuff-footer-advertisement,
+/* Login/Signup details. */
+.stuff-auth-block,
+/* Login & unhelpful hello message. */
+.stuff-header-inner-container.right-container > *,
+/* Remove Stuff shorts. */
+.ads-panels-container:has(storifyme-collection),
+/* Remove distracting live blinker. */
+img.live-icon,
+/* Last third of the above the fold content dedicated to ads. */
+.top-stories .ads-panel-right,
+/* Swiper stories which contain ads. */
+.swiper-slide:has(.ad-container) {
+	display: none !important;
+}
+
+/* Recolor and make the top nav links smaller. */
+.top-nav-bar-container a {
+	color: black !important;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+/* Delete excessive whitespace around carousels. */
+.stuff-box.stuff-frame-container.stuff-carousel-frame {
+	margin-top: 0;
+	padding-bottom: 0;
+}
