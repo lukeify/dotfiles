@@ -22,11 +22,14 @@
 	}
 
 	/**
-	 * Make secondary below-the-fold content take up the full width of space. This is defined as 100% of the containing
-	 * element's vertical width (`vb`), minus 1rem for the inline padding of the grid cell, and then 16.67% for the
-	 * sidebar's width.
+	 * Make secondary below-the-fold content take up the full width of space once an ad is removed. This is defined as
+	 * 100% of the containing element's vertical width, which, given we're in a flex container, is easily solved.
+	 *
+	 * Also, set a maximum width so the content doesn't get too big.
 	 */
 	.Grid-cell.u-xl-width7of12 {
-		width: calc(100vb - 1rem - calc(100% / 6)) !important;
+		flex: 100% !important;
+		max-width: 60em;
+		margin: auto;
 	}
 }
