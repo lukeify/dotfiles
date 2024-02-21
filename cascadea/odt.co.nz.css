@@ -10,7 +10,10 @@
 .pane-odt-social-odt-social-rsb, [class*="share-icons"],
 .inject-block-story,
 /* Hide div containing any image reference to a digital subscription. */
-.panel-pane.pane-custom.pane-1:has(img[src*="odt_summer_online"]) {
+.panel-pane.pane-custom.pane-1:has(a[href*="subscribe"]),
+/* Hide nzonair & "The South Today" logotisements */
+.odt-panel-richpanes-header:has(a[href*="south-today"]),
+.odt-panel-richpanes-header:has(a[href="http://www.nzonair.govt.nz/"]) {
     display: none;
 }
 
